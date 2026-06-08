@@ -1,0 +1,10 @@
+.gradle/
+build/
+out/
+.intellijPlatform/
+.idea/
+*.iml
+.DS_Store
+# 서명/배포 시크릿이 들어가지 않도록 주의
+*.pem
+secrets.properties

@@ -1,0 +1,14 @@
+<idea-plugin>
+    <!-- id / name / vendor / description 는 build.gradle.kts 의 pluginConfiguration 에서 주입됨 -->
+
+    <!-- 모든 IntelliJ 계열 IDE(Rider 포함)에서 동작하는 순수 플랫폼 플러그인 -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+            id="Claude Config"
+            anchor="right"
+            icon="/icons/claude.svg"
+            factoryClass="com.gear2w.claudeconfig.ClaudeConfigToolWindowFactory"/>
+    </extensions>
+</idea-plugin>
