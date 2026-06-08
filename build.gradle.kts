@@ -37,16 +37,19 @@ intellijPlatform {
 
         description =
             """
-            Rider 프로젝트에 흩어져 있는 Claude Code 설정 파일을 한곳에서 모아 보고 편집합니다.
+            Browse and edit all your Claude Code configuration files in one place, directly from
+            Rider or any IntelliJ-based IDE. The plugin adds a "Claude Config" tool window that
+            collects the configuration files scattered across your project and home directory:
             <ul>
-              <li>프로젝트 루트의 <code>CLAUDE.md</code></li>
-              <li>프로젝트 <code>.claude/</code> 아래의 <code>CLAUDE.md</code> 와 <code>skills/**</code></li>
-              <li>글로벌 <code>~/.claude/</code> 의 <code>CLAUDE.md</code> 와 <code>skills/**</code></li>
+              <li>The project root <code>CLAUDE.md</code></li>
+              <li>The project <code>.claude/</code> directory: its <code>CLAUDE.md</code> and <code>skills</code></li>
+              <li>The global <code>~/.claude/</code> directory: its <code>CLAUDE.md</code> and <code>skills</code></li>
             </ul>
-            툴윈도우 트리에서 파일을 더블클릭하면 에디터에서 바로 열어 수정할 수 있습니다.
+            Double-click any file in the tree to open it in the editor and edit it right away.
+            Use the Refresh action to rescan after files are added or removed.
             """.trimIndent()
 
-        changeNotes = "최초 릴리스: Claude 설정 파일 모아보기 / 편집 툴윈도우."
+        changeNotes = "Initial release: a tool window to browse and edit Claude Code configuration files."
 
         ideaVersion {
             sinceBuild = "243"
