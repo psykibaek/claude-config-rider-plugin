@@ -51,6 +51,8 @@ intellijPlatform {
 
         changeNotes =
             """
+            0.3.0: Validate <code>@import</code> paths in CLAUDE.md — non-existent targets are
+            underlined like an unresolved reference.<br/>
             0.2.0: Added path autocompletion for the <code>@import</code> syntax inside CLAUDE.md
             (type <code>@</code> to complete files and folders, including <code>~/</code> and absolute paths).<br/>
             0.1.0: Initial release: a tool window to browse and edit Claude Code configuration files.

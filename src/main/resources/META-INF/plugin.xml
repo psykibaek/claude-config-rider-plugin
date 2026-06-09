@@ -15,5 +15,10 @@
         <completion.contributor
             language="any"
             implementationClass="com.gear2w.claudeconfig.ClaudeImportCompletionContributor"/>
+
+        <!-- CLAUDE.md 의 @경로 import 존재 검증 (없으면 빨간 밑줄) -->
+        <annotator
+            language="any"
+            implementationClass="com.gear2w.claudeconfig.ClaudeImportAnnotator"/>
     </extensions>
 </idea-plugin>

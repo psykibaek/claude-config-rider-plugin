@@ -9,7 +9,6 @@ import com.intellij.codeInsight.completion.CompletionType
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.util.TextRange
-import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.patterns.PlatformPatterns
 import com.intellij.psi.PsiElement
 import com.intellij.util.ProcessingContext
@@ -45,7 +44,7 @@ class ClaudeImportCompletionContributor : CompletionContributor() {
             result: CompletionResultSet,
         ) {
             val vFile = parameters.originalFile.virtualFile ?: return
-            if (!isClaudeMemoryFile(vFile)) return
+            if (!ClaudePaths.isMemoryFile(vFile)) return
 
             // dummy identifier 가 끼지 않은 실제 문서/오프셋에서 '@' 토큰을 직접 파싱한다.
             val document = parameters.editor.document
@@ -65,13 +64,7 @@ class ClaudeImportCompletionContributor : CompletionContributor() {
             val namePart = token.substringAfterLast('/')
 
             val fileDir = vFile.parent?.path ?: return
-            val home = System.getProperty("user.home")
-            val baseDir = when {
-                dirPrefix.startsWith("~") -> File(home, dirPrefix.removePrefix("~").removePrefix("/"))
-                dirPrefix.startsWith("/") -> File(dirPrefix)
-                dirPrefix.isEmpty() -> File(fileDir)
-                else -> File(fileDir, dirPrefix)
-            }
+            val baseDir = ClaudePaths.resolve(dirPrefix, fileDir)
 
             val children = baseDir.listFiles()
                 ?.sortedWith(compareBy({ !it.isDirectory }, { it.name.lowercase() }))
@@ -100,18 +93,6 @@ class ClaudeImportCompletionContributor : CompletionContributor() {
                 }
                 matched.addElement(element)
             }
-        }
-
-        private fun isClaudeMemoryFile(vFile: VirtualFile): Boolean {
-            if (vFile.name == "CLAUDE.md") return true
-            if (vFile.extension?.lowercase() != "md") return false
-            // .claude 디렉터리 하위의 .md 파일도 대상으로 포함
-            var dir: VirtualFile? = vFile.parent
-            while (dir != null) {
-                if (dir.name == ".claude") return true
-                dir = dir.parent
-            }
-            return false
         }
     }
 }
