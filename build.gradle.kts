@@ -49,7 +49,12 @@ intellijPlatform {
             Use the Refresh action to rescan after files are added or removed.
             """.trimIndent()
 
-        changeNotes = "Initial release: a tool window to browse and edit Claude Code configuration files."
+        changeNotes =
+            """
+            0.2.0: Added path autocompletion for the <code>@import</code> syntax inside CLAUDE.md
+            (type <code>@</code> to complete files and folders, including <code>~/</code> and absolute paths).<br/>
+            0.1.0: Initial release: a tool window to browse and edit Claude Code configuration files.
+            """.trimIndent()
 
         ideaVersion {
             sinceBuild = "243"

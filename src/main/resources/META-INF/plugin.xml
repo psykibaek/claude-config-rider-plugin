@@ -10,5 +10,10 @@
             anchor="right"
             icon="/icons/claude.svg"
             factoryClass="com.gear2w.claudeconfig.ClaudeConfigToolWindowFactory"/>
+
+        <!-- CLAUDE.md 의 @경로 import 자동완성 -->
+        <completion.contributor
+            language="any"
+            implementationClass="com.gear2w.claudeconfig.ClaudeImportCompletionContributor"/>
     </extensions>
 </idea-plugin>
