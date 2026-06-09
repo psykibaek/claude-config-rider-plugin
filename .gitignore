@@ -8,3 +8,5 @@ out/
 # 서명/배포 시크릿이 들어가지 않도록 주의
 *.pem
 secrets.properties
+# 로컬 전용 메모(토큰 등 민감정보 포함) — 절대 커밋 금지
+CLAUDE.local.md
